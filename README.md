@@ -3,6 +3,9 @@
 A minimal and clean web app for logging work hours.  
 Designed to make time tracking **simple**, **fast**, and **accessible from anywhere**.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/aabirfan/timesheet-app/main/Dashboard.png" width="800">
+</p>
 
 ## Features
 
