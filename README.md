@@ -3,9 +3,6 @@
 A minimal and clean web app for logging work hours.  
 Designed to make time tracking **simple**, **fast**, and **accessible from anywhere**.
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/00000000/placeholder-screenshot.png" width="600" alt="UI Preview">
-</div>
 
 ## Features
 
