@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Timesheet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2025-11-08-4">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Timesheet</h1>
+      <div class="header-actions">
+        <div class="field field--compact" id="export-field">
+          <select id="export-month"></select>
+          <label for="export-month">Month</label>
+        </div>
+        <button id="export-btn" class="primary">Export</button>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle theme">🌙</button>
+        <button id="sign-in" class="primary">Sign in with Google</button>
+        <button id="sign-out" style="display:none;">Sign out</button>
+      </div>
+    </header>
+
+    <div id="authed" style="display:none;">
+
+      <div class="card">
+        <h2>Add entry</h2>
+        <form id="entry-form">
+          <div class="row">
+            <div class="field">
+              <input id="date" type="date" required placeholder=" " />
+              <label for="date">Date</label>
+            </div>
+            <div class="field">
+              <select id="task" required>
+                <option value="Misc">Misc</option>
+                <option value="Code">Code</option>
+                <option value="Meeting">Meeting</option>
+              </select>
+              <label for="task">Task</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <input id="start" type="time" step="1800" required placeholder=" " />
+              <label for="start">Start Time</label>
+            </div>
+            <div class="field">
+              <input id="end" type="time" step="1800" required placeholder=" " />
+              <label for="end">End Time</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <textarea id="comments" rows="3" placeholder=" "></textarea>
+            <label for="comments">Comments</label>
+          </div>
+
+          <div class="actions-inline">
+            <button type="submit" class="primary">Save</button>
+            <button id="cancel-edit" type="button" class="ghost" style="display:none;">Cancel</button>
+            <span id="calc-preview" class="muted"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Week Summary</h2>
+        <div class="row">
+          <div class="field field--select">
+            <select id="week-select"></select>
+            <label for="week-select">Week</label>
+          </div>
+          <div>
+            <label>Total hours</label>
+            <div id="week-summary" class="kpi">–</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Monthly Summary</h2>
+        <div id="month-summary" class="pill-row">No data yet.</div>
+      </div>
+
+      <div class="card">
+        <h2>Entries</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Start–End</th>
+              <th>Task</th>
+              <th>Minutes</th>
+              <th>Hours</th>
+              <th>Week#</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="entries-body"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="./main.js?v=2025-11-10-2"></script>
+</body>
+</html>

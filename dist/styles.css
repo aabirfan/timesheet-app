@@ -1,0 +1,197 @@
+:root{
+  --bg:#f7f7f9;
+  --card-bg:#fff;
+  --text:#161618;
+  --muted:#6b7280;
+  --border:#e6e8eb;
+  --ring:#1f2937;
+  --primary:#111827;
+  --primary-text:#ffffff;
+  --chip-bg:#eef2ff;
+  --chip-text:#3730a3;
+  --stat-bg:#f3f4f6;
+  --shadow:0 8px 18px rgba(0,0,0,.06);
+  --radius:14px; --radius-sm:10px;
+  font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#0b0c0f;
+  --card-bg:#111318;
+  --text:#f6f7f9;
+  --muted:#a1a6b2;
+  --border:#23262d;
+  --ring:#d1d5db;
+  --primary:#e5e7eb;
+  --primary-text:#0b0c0f;
+  --chip-bg:#1e293b;
+  --chip-text:#c7d2fe;
+  --stat-bg:#141820;
+  --shadow:0 8px 18px rgba(0,0,0,.45);
+}
+
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:960px;margin:32px auto 72px;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:12px}
+.header-actions{display:flex;gap:10px;align-items:center}
+h1{margin:0;font-size:32px;letter-spacing:-.01em;font-weight:700}
+h2{margin:0 0 12px;font-size:20px;font-weight:600}
+
+.card{
+  background:var(--card-bg); border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px; margin:18px 0; box-shadow:var(--shadow);
+}
+
+button{
+  font:inherit; font-weight:600; padding:10px 14px;
+  border-radius:var(--radius-sm); cursor:pointer; border:1px solid var(--border);
+}
+button.primary{background:var(--primary); color:var(--primary-text); border:none}
+button.primary:hover{opacity:.9}
+button.ghost{background:transparent; color:var(--text)}
+button.ghost:hover{background:color-mix(in srgb, var(--text) 8%, transparent)}
+
+.row{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start; width:100%;
+}
+@media (max-width:720px){ .row{ grid-template-columns:1fr } }
+.actions-inline{ margin-top:12px; display:flex; gap:10px; align-items:center }
+
+.field{ position:relative; width:100%; min-width:0; }
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  font:inherit; color:var(--text); background:transparent;
+  border:1px solid var(--border);
+  border-radius:9999px;
+  padding:14px 16px;
+  height:48px;
+  box-sizing:border-box;
+  outline:none;
+  position:relative; z-index:1;
+  transition:border-color .15s, box-shadow .15s, background .2s;
+}
+.field textarea{
+  min-height:120px; height:auto;
+  border-radius:18px; padding:14px 16px 16px;
+}
+.field input[type="date"],
+.field input[type="time"],
+.field select{ padding-right:44px }
+.field label{
+  position:absolute; left:14px; top:50%;
+  transform:translateY(-50%);
+  background:var(--card-bg);
+  padding:0 6px;
+  color:var(--muted);
+  pointer-events:none;
+  transition:transform .15s, color .15s, top .15s, font-size .15s;
+}
+.field input::placeholder, .field textarea::placeholder{ color:transparent }
+.field input:not(:placeholder-shown)+label,
+.field input:focus+label,
+.field select:focus+label,
+.field textarea:not(:placeholder-shown)+label,
+.field textarea:focus+label{
+  top:0;
+  transform:translateY(-50%) scale(.90);
+  font-size:12px; color:var(--muted);
+}
+.field select+label{
+  top:0;
+  transform:translateY(-50%) scale(.90);
+  font-size:12px; color:var(--muted);
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  border-color:var(--ring);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--ring) 22%, transparent);
+  background:color-mix(in srgb, var(--card-bg) 88%, var(--ring) 12%);
+}
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator{
+  opacity:.8; cursor:pointer; margin-right:6px;
+}
+
+.kpi{
+  display:flex; align-items:center; justify-content:center;
+  min-height:48px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--stat-bg);
+  font-weight:800; letter-spacing:.2px; font-size:18px;
+}
+
+.pill-row{ display:flex; flex-wrap:wrap; gap:8px }
+.pill-row .pill{
+  background:var(--chip-bg); color:var(--chip-text);
+  border-radius:999px; padding:6px 10px; font-weight:600; font-size:12.5px;
+  border:1px solid color-mix(in srgb, var(--chip-text) 12%, transparent);
+}
+
+.tag{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:5px 10px; border-radius:999px; font-size:12.5px; font-weight:600;
+  border:1px solid transparent;
+}
+.tag .dot{ width:7px; height:7px; border-radius:999px }
+.tag-misc   { background: color-mix(in srgb, var(--chip-bg) 70%, transparent); color: var(--chip-text); border-color: color-mix(in srgb, var(--chip-text) 14%, transparent); }
+.tag-code   { background:#0ea5e91a; color:#38bdf8; border-color:#38bdf833 }
+.tag-meeting{ background:#22c55e1a; color:#34d399; border-color:#34d39933 }
+.tag-misc .dot{ background:var(--chip-text) }
+.tag-code .dot{ background:#38bdf8 }
+.tag-meeting .dot{ background:#34d399 }
+
+table{ width:100%; border-collapse:collapse; margin-top:6px }
+th{ text-align:left; font-weight:600; padding:10px 6px; border-bottom:1px solid var(--border) }
+td{ padding:10px 6px; border-bottom:1px solid var(--border) }
+tbody tr:hover{ background:color-mix(in srgb, var(--text) 6%, transparent) }
+
+.muted{ color:var(--muted); font-size:14px }
+
+.row > * { min-width: 0; }
+.field { position: relative; z-index: 0; }
+.field input,
+.field select,
+.field textarea { display: block; z-index: 1; }
+.field label { z-index: 2; }
+
+input[type="date"],
+input[type="time"],
+select { -webkit-appearance: none; appearance: none; }
+.field {
+  margin-bottom: 14px;
+}
+
+/* Compact field for header (export month) */
+.field--compact { width: 140px; min-width: 120px; }
+.field--compact select {
+  height: 40px;
+  padding: 10px 14px 10px 14px;
+}
+.field--compact label {
+  left: 12px;
+  font-size: 12px;
+  top: 0;
+  transform: translateY(-50%) scale(.90);
+}
+
+/* Slightly tighter header spacing */
+.header-actions { gap: 12px; }
+
+/* Keep select text clear of the floating label */
+.field--select select { padding-left: 96px; }
+.field--select label  {
+  top: 0;
+  transform: translateY(-50%) scale(.90);
+  font-size: 12px;
+  left: 18px;
+  white-space: nowrap;
+}
+@media (max-width:480px){
+  .field--select select { padding-left: 80px; }
+}
+
