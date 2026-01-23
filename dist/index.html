@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2025-11-08-4">
+  <link rel="stylesheet" href="styles.css?v=2026-01-23-1">
 </head>
 <body>
   <div class="container">
@@ -72,6 +72,10 @@
         <h2>Week Summary</h2>
         <div class="row">
           <div class="field field--select">
+            <select id="week-year"></select>
+            <label for="week-year">Year</label>
+          </div>
+          <div class="field field--select">
             <select id="week-select"></select>
             <label for="week-select">Week</label>
           </div>
@@ -89,6 +93,31 @@
 
       <div class="card">
         <h2>Entries</h2>
+        <div class="filters-panel">
+          <div class="filters-row">
+            <div class="field field--select field--filter">
+              <select id="filter-task">
+                <option value="all">All tasks</option>
+              </select>
+              <label for="filter-task">Task</label>
+            </div>
+            <div class="field field--select field--filter">
+              <select id="filter-week">
+                <option value="all">All weeks</option>
+              </select>
+              <label for="filter-week">Week</label>
+            </div>
+            <div class="field field--select field--filter">
+              <select id="filter-month">
+                <option value="all">All months</option>
+              </select>
+              <label for="filter-month">Month</label>
+            </div>
+            <button id="filters-clear" class="ghost" type="button">Clear filters</button>
+          </div>
+          <div id="filters-active" class="filter-chips" aria-live="polite"></div>
+          <div id="entries-count" class="muted entries-count">Showing 0 entries</div>
+        </div>
         <table>
           <thead>
             <tr>
@@ -108,6 +137,6 @@
     </div>
   </div>
 
-  <script type="module" src="./main.js?v=2025-11-10-2"></script>
+  <script type="module" src="./main.js?v=2026-01-23-1"></script>
 </body>
 </html>

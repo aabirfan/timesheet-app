@@ -11,6 +11,7 @@ import {
   bindWeekDropdown,
   bindTimeSelectorLock,
   bindExport,
+  bindEntryFilters,
   getEntryById,
   setFormData,
   setEditModeUI,
@@ -55,6 +56,7 @@ function init() {
   bindWeekDropdown();
   bindExport();
   bindTimeSelectorLock();
+  bindEntryFilters();
 
   els.entryForm.addEventListener('submit', async (e) => {
     e.preventDefault();

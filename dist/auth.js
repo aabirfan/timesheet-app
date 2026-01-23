@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   signInWithRedirect,
   getRedirectResult,
+  signInAnonymously,
   signOut,
   onAuthStateChanged
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
@@ -28,7 +29,11 @@ export function bindAuthButtons(signInBtn, signOutBtn) {
           alert('Sign-in failed: ' + redirErr.code);
         }
       } else if (err.code === 'auth/unauthorized-domain') {
-        alert('This domain is not authorized in Firebase Authentication settings.\nAdd it under Authentication → Settings → Authorized domains.');
+        alert(
+          'This domain is not authorized for Google sign-in.\n\n' +
+          'To use PRODUCTION Google sign-in locally: Firebase Console → Authentication → Settings → Authorized domains → add 127.0.0.1 (and localhost).\n\n' +
+          'If you are using the Auth emulator, use a non-OAuth sign-in method (anonymous or email/password).'
+        );
       } else if (err.code === 'auth/operation-not-supported-in-this-environment') {
         alert('Sign-in requires HTTPS or localhost. Please deploy or use Firebase Hosting.');
       } else {
